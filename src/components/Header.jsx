@@ -1,17 +1,19 @@
 import React from 'react';
 import styled from 'styled-components'
+import color from '../utils/color'
+import config from '../utils/config'
 import PropTypes from 'prop-types'
 
 const logoImg = require('../images/account_logo.png')
-
-function App(data) {
+function Header(data) {
   const Header = styled.header `
-    height: 60px;
+    height: ${config.HEADER_HEIGHT}px;
     display: flex;
     justify-content: space-between;
     padding: 0 50px;
     align-items: center;
-    background: #f3f5f7;
+    background: ${color.$base_white_bg};
+    /* color: ${color.baseColor} */
   `
   const LArea = styled.div `
     display: flex;
@@ -32,7 +34,8 @@ function App(data) {
     height: 60px;
     align-items: center;
     .menu-item{
-      margin-left: 20px;
+      margin-left: 10px;
+      padding: 10px;
       display: flex;
       align-items: center;
       &:hover {
@@ -50,17 +53,17 @@ function App(data) {
         <span>私人小金库</span>
       </LArea>
       <RArea>
-        <div className='menu-item'>
+        <div className='menu-item pointer'>
           <span className='iconfont icon-1USER'></span> 张三
         </div>
-        <div className='menu-item'>
+        <div className='menu-item pointer'>
           <span className='iconfont icon-log-out'></span> 退出
         </div>  
       </RArea>
     </Header>
   );
 }
-App.propTypes = {
+Header.propTypes = {
   // userInformation: PropTypes.array.isRequired,
 }
-export default App;
+export default Header;
