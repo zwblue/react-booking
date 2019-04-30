@@ -54,7 +54,7 @@ function Header({userName, isLogin}) {
       </LArea>
       <RArea>
         <div className='menu-item pointer'>
-          <span className='iconfont icon-1USER'></span> {isLogin ? '未登录' : userName}
+          <span className='iconfont icon-1USER'></span> {isLogin ? userName : '未登录' }
         </div>
         <div className='menu-item pointer'>
           <span className='iconfont icon-log-out'></span> 注销

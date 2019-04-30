@@ -33,8 +33,6 @@ export class SiderCase extends Component {
 
   render() {
     const {activeIndex, siderMenuData} = this.state
-    // const {userInformation} = this.props
-    // console.log(userInformation)
     return (
       <Sider activeIndex={activeIndex} siderMenuData={siderMenuData} onSwitchMenu={(index)=>{this.switchMenu(index)}}></Sider>  
     )
@@ -42,11 +40,7 @@ export class SiderCase extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  // userInformation: state.userInformation
 })
-
-const mapDispatchToProps = {
-  
-}
-
+const mapDispatchToProps = (dispatch) => ({
+})
 export default connect(mapStateToProps, mapDispatchToProps)(SiderCase)

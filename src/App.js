@@ -1,7 +1,7 @@
 import React from 'react';
 import HeaderCase from './containers/HeaderCase.js'
 import Section from './components/Section.jsx'
-import './styles/App.scss';
+import './styles/App.css';
 import './styles/common.css';
 
 function App() {

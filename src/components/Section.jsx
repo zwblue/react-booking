@@ -21,7 +21,7 @@ function Section() {
   `
   return (
     <Section>
-      <SiderCase></SiderCase>
+      <SiderCase a={true}></SiderCase>
       <Content></Content>
     </Section>
   );
