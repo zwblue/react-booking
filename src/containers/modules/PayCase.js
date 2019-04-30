@@ -2,10 +2,9 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'                           // 用来连接redux中reducer中全局数据的
 
-import FunMould from '../components/1_funMould'                 // 引用的ui组件
+import Pay from '../../components/modules/Pay'                 // 引用的ui组件
 
-
-export class Module extends Component {
+export class PayCase extends Component {
   static propTypes = {
     // prop: PropTypes
   }
@@ -17,7 +16,7 @@ export class Module extends Component {
   render() {
     return (
       <div>
-         <FunMould username={this.state.username} userphone= {this.props.userphone} handeleClick={(index)=>{this.handeleClick(index)}}></FunMould>
+         <Pay />
       </div>
     )
   }
@@ -26,4 +25,4 @@ const mapStateToProps = (state) => ({                  // owProps 是这个容�
 })
 const mapDispatchToProps = (dispatch) => ({            // 引用全局actions中定义方法
 })
-export default connect(mapStateToProps, mapDispatchToProps)(Module)
+export default connect(mapStateToProps, mapDispatchToProps)(PayCase)

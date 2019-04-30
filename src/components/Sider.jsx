@@ -32,7 +32,7 @@ function Sider({siderMenuData, activeIndex, onSwitchMenu}) {
                 className={activeIndex === index ? 'menu-item active': 'menu-item'}
                 onClick={()=>{onSwitchMenu(index)}}
                 >
-                {item}
+                {item.name}
               </div>
             )
           })

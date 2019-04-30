@@ -2,8 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'                           // 用来连接redux中reducer中全局数据的
 
-import FunMould from '../components/1_funMould'                 // 引用的ui组件
-
+import Income from '../../components/modules/Income'                 // 引用的ui组件
 
 export class Module extends Component {
   static propTypes = {
@@ -17,7 +16,7 @@ export class Module extends Component {
   render() {
     return (
       <div>
-         <FunMould username={this.state.username} userphone= {this.props.userphone} handeleClick={(index)=>{this.handeleClick(index)}}></FunMould>
+         <Income />
       </div>
     )
   }

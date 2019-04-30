@@ -2,22 +2,20 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
+import Login from '../components/Login'
+
 export class Module extends Component {
   static propTypes = {
-    prop: PropTypes
+    // prop: PropTypes
   }
   constructor(props) {
     super(props)
-  
     this.state = {
-       
     }
   }
   render() {
     return (
-      <div>
-        
-      </div>
+      <Login></Login>
     )
   }
 }

@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
+import {withRouter} from 'react-router-dom'
+
 import Sider from '../components/Sider'
 
 
@@ -15,20 +17,25 @@ export class SiderCase extends Component {
     super(props)
   
     this.state = {
-      activeIndex: 0,
+      activeIndex: 2,
       siderMenuData: [
-        '收入', '支出', '设置'
+        { path: '', name: '收入' },
+        { path: '/pay', name: '支出' },
+        { path: '/set', name: '设置' },
       ],
     }
   }
-  
   switchMenu(index) {
-    const {activeIndex} = this.state
+    const {activeIndex, siderMenuData} = this.state
     if(activeIndex !== index) {
       this.setState({
         activeIndex: index
+      },()=>{
+        console.log(33333)
       })
+      this.props.history.replace(siderMenuData[index].path)
     }
+
   }
 
   render() {
@@ -43,4 +50,4 @@ const mapStateToProps = (state) => ({
 })
 const mapDispatchToProps = (dispatch) => ({
 })
-export default connect(mapStateToProps, mapDispatchToProps)(SiderCase)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(SiderCase))
