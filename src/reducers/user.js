@@ -1,8 +1,9 @@
+const jsonUserInformation = sessionStorage.getItem('userInformation') ? JSON.parse(sessionStorage.getItem('userInformation')) : {}
+
 const initUserState = {
-  name: '',
-  passWord: '',
-  phone: '',
-  theme: ''
+  name: jsonUserInformation.name || '',
+  phone: jsonUserInformation.phone || '',
+  theme: jsonUserInformation.theme || ''
 }
 const user = (state = initUserState, action) => {
   switch (action.type) {

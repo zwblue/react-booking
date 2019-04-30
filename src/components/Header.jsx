@@ -5,7 +5,7 @@ import config from '../utils/config'
 import PropTypes from 'prop-types'
 
 const logoImg = require('../images/account_logo.png')
-function Header(data) {
+function Header({userName, isLogin}) {
   const Header = styled.header `
     height: ${config.HEADER_HEIGHT}px;
     display: flex;
@@ -54,10 +54,10 @@ function Header(data) {
       </LArea>
       <RArea>
         <div className='menu-item pointer'>
-          <span className='iconfont icon-1USER'></span> 张三
+          <span className='iconfont icon-1USER'></span> {isLogin ? '未登录' : userName}
         </div>
         <div className='menu-item pointer'>
-          <span className='iconfont icon-log-out'></span> 退出
+          <span className='iconfont icon-log-out'></span> 注销
         </div>  
       </RArea>
     </Header>

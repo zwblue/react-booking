@@ -1,23 +1,34 @@
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-// import { updateUserInformation } from '../actions'
+
 import Header from '../components/Header'
 
-const mapStateToProps = (state, ownProps) => {
-  return {
-    userInformation: state.user
+export class HeaderCase extends Component {
+  static propTypes = {
+    userInformation: PropTypes.object
+  }
+  constructor(props) {
+    super(props)
+    this.state = {
+       isLogin: false
+    }
+  }
+  render() {
+    const {isLogin} = this.state
+    const {name} = this.props.userInformation
+    console.log(name)
+    return (
+      <Header userName={name} isLogin={isLogin}></Header>  
+    )
   }
 }
 
-// const mapDispatchToProps = (dispatch, ownProps) => {
-//   return {
-//     onClick: () => {
-//       dispatch(updateUserInformation(ownProps.userInformation))
-//     }
-//   }
-// }
+const mapStateToProps = (state, ownProps) => {
+  return {
+    userInformation: state.userInformation
+  }
+}
 
-const HeaderCase = connect(
-  mapStateToProps
-)(Header)
 
-export default HeaderCase
+export default connect(mapStateToProps)(HeaderCase)
