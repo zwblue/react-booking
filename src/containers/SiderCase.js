@@ -7,7 +7,7 @@ import Sider from '../components/Sider'
 
 export class SiderCase extends Component {
   static propTypes = {
-    prop: PropTypes
+    // userInformation: PropTypes.object
   }
 
   
@@ -15,7 +15,7 @@ export class SiderCase extends Component {
     super(props)
   
     this.state = {
-      activeIndex: -1,
+      activeIndex: 0,
       siderMenuData: [
         '收入', '支出', '设置'
       ],
@@ -33,6 +33,8 @@ export class SiderCase extends Component {
 
   render() {
     const {activeIndex, siderMenuData} = this.state
+    // const {userInformation} = this.props
+    // console.log(userInformation)
     return (
       <Sider activeIndex={activeIndex} siderMenuData={siderMenuData} onSwitchMenu={(index)=>{this.switchMenu(index)}}></Sider>  
     )
@@ -40,7 +42,7 @@ export class SiderCase extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  
+  // userInformation: state.userInformation
 })
 
 const mapDispatchToProps = {
@@ -48,13 +50,3 @@ const mapDispatchToProps = {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(SiderCase)
-
-
-
-// const mapDispatchToProps = (dispatch, ownProps) => {
-//   return {
-//     onClick: () => {
-//       dispatch(updateUserInformation(ownProps.userInformation))
-//     }
-//   }
-// }
