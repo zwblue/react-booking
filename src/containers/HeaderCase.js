@@ -4,6 +4,8 @@ import { connect } from 'react-redux'
 
 import Header from '../components/Header'
 
+import {updateUserInformation} from '../actions/user'
+
 export class HeaderCase extends Component {
   static propTypes = {
     userInformation: PropTypes.object
@@ -14,12 +16,19 @@ export class HeaderCase extends Component {
        isLogin: false
     }
   }
+  _updateUserInformation = () => {
+    const {userInformation, updateUserInformation} = this.props
+    if(userInformation.theme === 'white') {
+      updateUserInformation({theme: 'black',  power: 1})
+    } else {
+      updateUserInformation({theme: 'white', power: 2})
+    }
+  }
   render() {
     const {isLogin} = this.state
-    const {name} = this.props.userInformation
-    console.log(name)
+    const {userInformation} = this.props
     return (
-      <Header userName={name} isLogin={isLogin}></Header>  
+      <Header userName={userInformation.name} theme={userInformation.theme} isLogin={isLogin} updateUserInformation={this._updateUserInformation}></Header>  
     )
   }
 }
@@ -30,5 +39,11 @@ const mapStateToProps = (state, ownProps) => {
   }
 }
 
+const mapDispatchToProps = (display)=>{
+  return {
+    updateUserInformation: (userInformation)=> display(updateUserInformation(userInformation))
+  }
+}
 
-export default connect(mapStateToProps)(HeaderCase)
+
+export default connect(mapStateToProps, mapDispatchToProps)(HeaderCase)

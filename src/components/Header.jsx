@@ -5,7 +5,7 @@ import config from '../utils/config'
 import PropTypes from 'prop-types'
 
 const logoImg = require('../images/account_logo.png')
-function Header({userName, isLogin}) {
+function Header({userName, isLogin, theme, updateUserInformation}) {
   const Header = styled.header `
     height: ${config.HEADER_HEIGHT}px;
     display: flex;
@@ -32,6 +32,7 @@ function Header({userName, isLogin}) {
   const RArea = styled.div `
     display: flex;
     height: 60px;
+    line-height: 1;
     align-items: center;
     .menu-item{
       margin-left: 10px;
@@ -53,12 +54,16 @@ function Header({userName, isLogin}) {
         <span>私人小金库</span>
       </LArea>
       <RArea>
+        <div className='menu-item pointer' onClick={()=>{updateUserInformation()}}>
+          <span className='iconfont icon-theme'></span> { theme === 'white' ? '简洁白' : '酷炫黑'}
+        </div>  
         <div className='menu-item pointer'>
           <span className='iconfont icon-1USER'></span> {isLogin ? userName : '未登录' }
         </div>
         <div className='menu-item pointer'>
-          <span className='iconfont icon-log-out'></span> 注销
+          <span className='iconfont icon-log-out'></span>注销
         </div>  
+       
       </RArea>
     </Header>
   );

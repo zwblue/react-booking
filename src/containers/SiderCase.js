@@ -15,25 +15,26 @@ export class SiderCase extends Component {
   
   constructor(props) {
     super(props)
-  
     this.state = {
-      activeIndex: 2,
+      activeIndex: -1,
       siderMenuData: [
-        { path: '', name: '收入' },
+        { path: '/', name: '收入' },
         { path: '/pay', name: '支出' },
         { path: '/set', name: '设置' },
       ],
     }
   }
+  componentDidMount() {
+    const pathname = this.props.history.location.pathname
+    const activeIndex = this.state.siderMenuData.findIndex((item)=> item.path === pathname)
+    this.setState({
+      activeIndex
+    })
+  }
   switchMenu(index) {
     const {activeIndex, siderMenuData} = this.state
     if(activeIndex !== index) {
-      this.setState({
-        activeIndex: index
-      },()=>{
-        console.log(33333)
-      })
-      this.props.history.replace(siderMenuData[index].path)
+      this.props.history.push(siderMenuData[index].path)
     }
 
   }
@@ -41,7 +42,7 @@ export class SiderCase extends Component {
   render() {
     const {activeIndex, siderMenuData} = this.state
     return (
-      <Sider activeIndex={activeIndex} siderMenuData={siderMenuData} onSwitchMenu={(index)=>{this.switchMenu(index)}}></Sider>  
+      <Sider activeIndex={activeIndex} siderMenuData={siderMenuData} onSwitchMenu={(index)=>{console.log(this);this.switchMenu(index)}}></Sider>  
     )
   }
 }
